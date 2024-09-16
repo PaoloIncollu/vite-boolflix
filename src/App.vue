@@ -14,7 +14,7 @@ import { store } from './store.js';
 export default {
   data() {
     return { 
-      
+      store
     }
   },
   // 2) Dichiarazione del componente
@@ -23,27 +23,43 @@ export default {
     AppMain,
     AppFooter
   },
+ 
+ created() {
+  this.searchMovie()
+    },
+
   methods: {
     
-  }/*,
-created() {
-    axios
-      .get(...)
-      .then((res) => {
-        console.log('OGGETTO CREATO DA AXIOS:', res);
-        console.log('DATI CHE CI HA RISPOSTO IL SERVER:', res.data);
-        console.log('TUTTI I PERSONAGGI:', res.data.results);
+    searchMovie(){
 
-        this.store.allCharacters = res.data.results;
-      });
-  }*/
+      axios
+  .get('https://api.themoviedb.org/3/search/movie?api_key=28269fe089100b98912f0738ca2cb102&language=it_IT',{
+
+    params:{
+
+      query:this.store.titleSearch
+    }
+  }
+  )
+  .then((res) =>{
+    
+    console.log('OGGETTO CREATO DA AXIOS:', res.data.results);
+      this.store.films = res.data.results;
+      
+  });
+    }
+
+
+  }
+
+
 }
 </script>
 
 <template>
   <div>
     <!-- 3) Utilizzo del componente -->
-    <AppHeader />
+    <AppHeader @search="searchMovie"/>
     
     <AppMain/>
 
