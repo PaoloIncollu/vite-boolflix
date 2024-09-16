@@ -41,10 +41,26 @@ export default {
     }
   }
   )
-  .then((res) =>{
+  .then((films) =>{
     
-    console.log('OGGETTO CREATO DA AXIOS:', res.data.results);
-      this.store.films = res.data.results;
+    console.log('OGGETTO CREATO DA AXIOS:', films.data.results);
+      this.store.films = films.data.results;
+      
+  });
+
+  axios
+  .get('https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT',{
+
+    params:{
+
+      query:this.store.titleSearch
+    }
+  }
+  )
+  .then((series) =>{
+    
+    console.log('OGGETTO CREATO DA AXIOS:', series.data.results);
+      this.store.seriesTv = series.data.results;
       
   });
     }
