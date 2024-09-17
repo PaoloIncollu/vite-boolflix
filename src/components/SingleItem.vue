@@ -20,6 +20,11 @@ export default {
     getUrlImg(){
 
         return 'https://image.tmdb.org/t/p/w342/' + this.backdrop
+    },
+    roundNumber(){
+
+       return Math.round(this.vote / 2) 
+        
     }
   }
 }
@@ -42,7 +47,10 @@ export default {
       </template>  
         
     </li>
-    <li class="list-group-item pt-2 ">Voto: {{ vote }}</li>
+    <li class="list-group-item pt-2 ">
+        Voto: {{roundNumber()}}
+        
+    </li>
     <li class="list-group-item pt-2">
         <img :src=getUrlImg() :alt="title">
     </li>

@@ -45,7 +45,7 @@ export default {
   )
   .then((films) =>{
 	
-	console.log('OGGETTO CREATO DA AXIOS:', films.data.results);
+	console.log('OGGETTO FILMS CREATO DA AXIOS:', films.data.results);
 	  this.store.films = films.data.results;
 	  
   });
@@ -63,7 +63,7 @@ export default {
   )
   .then((series) =>{
 	
-	console.log('OGGETTO CREATO DA AXIOS:', series.data.results);
+	console.log('OGGETTO SERIE CREATO DA AXIOS:', series.data.results);
 	  this.store.seriesTv = series.data.results;
 	  
   });
