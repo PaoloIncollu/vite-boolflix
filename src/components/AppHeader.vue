@@ -14,25 +14,38 @@ export default {
 </script>
 
 <template>
-  <header>
-    
-  <div class="mb-3 d-flex w-100 justify-content-center align-items-center">
-    
-    <label for="search" class="form-label fs-2 fw-bold">Cerca film</label>
-    <input v-model="store.titleSearch"  type="text" class="form-control w-50 mx-5" id="search" >
-    <button  @click.prevent="$emit('search')" class="btn btn-primary ">Search</button>
+  <header class="bg-warning">
+    <div class="my-nav-bar d-flex justify-content-between align-items-center">
 
-  </div>
+      <div>
+        <img src="https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="">
+      </div>
+
+      <div class="d-flex w-50 h-25">
+        <input v-model="store.titleSearch"  type="text" class="form-control mx-5" id="search" placeholder="Ricerca film e serie tv">
+        <button  @click.prevent="$emit('search')" class="btn btn-primary ">Search</button>
+
+      </div>
     
+    </div>
+  
   </header>
 </template>
 
 <style lang="scss" scoped>
 
 header {
-  background-color: red;
+  
   text-align: center;
-  padding: 20px 0;
+  padding: 40px 0;
+  width: 100%;
+
+  .my-nav-bar{
+
+    width: 80%;
+    margin: 0 auto;
+  }
+  
 }
 
 
