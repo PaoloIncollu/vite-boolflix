@@ -13,57 +13,61 @@ import axios from 'axios';
 import { store } from './store.js';
 export default {
   data() {
-    return { 
-      store
-    }
+	return { 
+	  store,
+	  apiKey:'28269fe089100b98912f0738ca2cb102'
+	}
   },
   // 2) Dichiarazione del componente
   components: {
-    AppHeader,
-    AppMain,
-    AppFooter
+	AppHeader,
+	AppMain,
+	AppFooter
   },
  
  created() {
   this.searchMovie()
-    },
+	},
 
   methods: {
-    
-    searchMovie(){
+	
+	searchMovie(){
 
-      axios
-  .get('https://api.themoviedb.org/3/search/movie?api_key=28269fe089100b98912f0738ca2cb102&language=it_IT',{
+	  axios
+  .get('https://api.themoviedb.org/3/search/movie',{
 
-    params:{
-
-      query:this.store.titleSearch
-    }
+	params:{
+	  api_key:this.apiKey,
+	  language:'it_IT',
+	  query:this.store.titleSearch
+	}
   }
   )
   .then((films) =>{
-    
-    console.log('OGGETTO CREATO DA AXIOS:', films.data.results);
-      this.store.films = films.data.results;
-      
+	
+	console.log('OGGETTO CREATO DA AXIOS:', films.data.results);
+	  this.store.films = films.data.results;
+	  
   });
 
   axios
-  .get('https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT',{
+  .get('https://api.themoviedb.org/3/search/tv',{
 
-    params:{
+	params:{
 
-      query:this.store.titleSearch
-    }
+	  api_key:this.apiKey,
+	  language:'it_IT',
+	  query:this.store.titleSearch
+	}
   }
   )
   .then((series) =>{
-    
-    console.log('OGGETTO CREATO DA AXIOS:', series.data.results);
-      this.store.seriesTv = series.data.results;
-      
+	
+	console.log('OGGETTO CREATO DA AXIOS:', series.data.results);
+	  this.store.seriesTv = series.data.results;
+	  
   });
-    }
+	}
 
 
   }
@@ -74,12 +78,12 @@ export default {
 
 <template>
   <div>
-    <!-- 3) Utilizzo del componente -->
-    <AppHeader @search="searchMovie"/>
-    
-    <AppMain/>
+	<!-- 3) Utilizzo del componente -->
+	<AppHeader @search="searchMovie"/>
+	
+	<AppMain/>
 
-    <AppFooter/>
+	<AppFooter/>
   </div>
 </template>
 

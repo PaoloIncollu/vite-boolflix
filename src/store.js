@@ -2,6 +2,7 @@ import { reactive } from 'vue';
 
 export const store = reactive({
     films:[],
+    urlBases:'https://image.tmdb.org/t/p/w342/',
     seriesTv:[],
     titleSearch:'',
     flags:[
