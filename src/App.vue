@@ -16,7 +16,8 @@ export default {
   data() {
 	return { 
 	  store,
-	  apiKey:'28269fe089100b98912f0738ca2cb102'
+	  apiKey:'28269fe089100b98912f0738ca2cb102',
+	  myLanguage:'it_IT'
 	}
   },
   // 2) Dichiarazione del componente
@@ -39,7 +40,7 @@ export default {
 
 	params:{
 	  api_key:this.apiKey,
-	  language:'it_IT',
+	  language:this.myLanguage,
 	  query:this.store.titleSearch
 	}
   }
@@ -57,7 +58,7 @@ export default {
 	params:{
 
 	  api_key:this.apiKey,
-	  language:'it_IT',
+	  language:this.myLanguage,
 	  query:this.store.titleSearch
 	}
   }

@@ -15,7 +15,7 @@ export default {
 
 <template>
   <header class="bg-warning">
-    <div class="my-nav-bar d-flex justify-content-between align-items-center">
+    <div class="my-nav-bar d-flex justify-content-between align-items-center py-3">
 
       <div>
         <img src="https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="">

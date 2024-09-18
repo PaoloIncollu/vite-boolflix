@@ -19,15 +19,15 @@ export default {
 </script>
 
 <template>
- <main class="mt-5">
+ <main class="bg-dark">
 
-  <div>
-    <h2 class="fw-bold text-danger text-center">
+  <div class="pt-5">
+    <h2 class="fw-bold text-danger text-center mb-5">
       Film Trovati
     </h2>
 	<div class="my-container-cards d-flex flex-wrap">
-		<div v-for=" (film, index) in store.films" :key="index" class="my-card  border-0">
-		<div>
+		<div v-for=" (film, index) in store.films" :key="index" class="my-container-card  border-0">
+		<div class="my-card  bg-white">
 			<SingleItem 
 				:title="film.title"
 				:originalTitle="film.original_title"
@@ -47,12 +47,12 @@ export default {
   
   <div class="mt-5">
 
-    <h2 class="fw-bold text-warning text-center">
+    <h2 class="fw-bold text-warning text-center mb-5">
       Serie TV Trovate
     </h2>
     <div class="my-container-cards d-flex flex-wrap">
-		<div v-for=" (serie, index) in store.seriesTv" :key="index" class="my-card border-0">
-			<div>
+		<div v-for=" (serie, index) in store.seriesTv" :key="index" class="my-container-card border-0 ">
+			<div class="my-card bg-white">
 				<SingleItem 
 				:title="serie.name"
 				:originalTitle="serie.original_name"
@@ -73,15 +73,25 @@ export default {
 
 <style lang="scss" scoped>
 .my-container-cards{
-	width: 100%;
+	width: 80%;
 	margin: 0 auto;
-	.my-card{
+	.my-container-card{
+		
+		width:calc(100% / 4);
+		height: 200px;
+		margin-bottom: 40px;
+	
+		.my-card{
+			position: relative;
+			width: 80%;
+			height: 200px;
+			
 
-		position: relative;
-		width:25%;
-		
-		
-		
+		}
 	}
+		
+		
+		
 }
+
 </style>

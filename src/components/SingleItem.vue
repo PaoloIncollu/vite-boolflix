@@ -5,14 +5,7 @@ import { store } from '../store.js'
 export default {
   data() {
     return { 
-      store,
-      stars:{
-        starYellow:'https://img.icons8.com/?size=16&id=87XmLcImcKSL&format=png',
-        star:'https://img.icons8.com/?size=16&id=BUyCA1Ge5p9C&format=png'
-      }
-
-      
-      
+      store
       
     }
   },
@@ -28,13 +21,24 @@ export default {
   methods:{
 
     getUrlImg(){
+        if(this.backdrop != null){
 
-        return 'https://image.tmdb.org/t/p/w342/' + this.backdrop
+            return 'https://image.tmdb.org/t/p/w342/' + this.backdrop
+        }
+        else{
+
+            return 'https://www.nerdpool.it/wp-content/uploads/2023/10/netflix-logo.jpg'
+        }
     },
-    roundNumber(){
+    fullStars(){
 
-       return Math.round(this.vote / 2) 
+       return Math.ceil(this.vote / 2) 
         
+    },
+    emptyStars(){
+
+        return (5 - (Math.ceil(this.vote / 2)) )
+ 
     }
   }
 }
@@ -42,7 +46,7 @@ export default {
 
 <template>
 
-  <div class="p-4">
+  <div class="card-info p-4">
 
     <h5>Titolo: {{ title }}</h5>
     <h6>Titolo originale: {{ originalTitle }}</h6>
@@ -51,61 +55,21 @@ export default {
         <template v-for="(flag,i) in store.flags" :key="i">
 
             <span v-if="flag.id === language">
-            <span class="fw-bold">Language:</span>
-            <img :src="flag.imgFlag" :alt="language">
-            
+                <span class="fw-bold">Language:</span>
+                <img :src="flag.imgFlag" :alt="language">
             </span>
             
         </template>
     </div>
     
     <div>
-        <span class="fw-bold">
-        Voto:
-        <span v-if="this.roundNumber()=== 0">
-            <img :src="this.stars.star" alt="">
-            <img :src="this.stars.star" alt="">
-            <img :src="this.stars.star" alt="">
-            <img :src="this.stars.star" alt="">
-            <img :src="this.stars.star" alt="">
+        <span>
+            <i v-for="x in fullStars()" class="fa-solid fa-star" :key="x"></i>
+            <i v-for="x in emptyStars()" class="fa-regular fa-star" :key="x"></i>
         </span>
-        <span v-if="this.roundNumber()=== 1">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.star" alt="">
-            <img :src="this.stars.star" alt="">
-            <img :src="this.stars.star" alt="">
-            <img :src="this.stars.star" alt="">
-        </span>
-        <span v-if="this.roundNumber()=== 2">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.star" alt="">
-            <img :src="this.stars.star" alt="">
-            <img :src="this.stars.star" alt="">
-        </span>
-        <span v-if="this.roundNumber()=== 3">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.star" alt="">
-            <img :src="this.stars.star" alt="">
-        </span>
-        <span v-if="this.roundNumber()=== 4">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.star" alt="">
-        </span>
-        <span v-if="this.roundNumber()=== 5">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.starYellow" alt="">
-            <img :src="this.stars.starYellow" alt="">
-        </span>
-    </span>
+        
     </div>
+    
     <div>
 
         <span class="fw-bold">Overview:</span>
@@ -127,19 +91,29 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+.card-info{
+    
+    width: 100%;
+    height: 200px;
+    overflow: auto;
+	scrollbar-width: none;
+    
+}
 .img-card{
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     width: 100%;
-    height:100%;
+    height:200px;
     &:hover{
-        cursor: pointer;
         display: none;
     }
+     
     img{
         width: 100%;
-        height: 100%;
+        height: 200px;
+       
     }
 }
 </style>
