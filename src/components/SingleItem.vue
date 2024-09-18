@@ -64,7 +64,7 @@ export default {
     
     <div>
         <span>
-            <i v-for="x in fullStars()" class="fa-solid fa-star" :key="x"></i>
+            <i v-for="x in fullStars()" class="fa-solid fa-star text-warning" :key="x"></i>
             <i v-for="x in emptyStars()" class="fa-regular fa-star" :key="x"></i>
         </span>
         
@@ -96,8 +96,7 @@ export default {
     
     width: 100%;
     height: 200px;
-    overflow: auto;
-	scrollbar-width: none;
+    
     
 }
 .img-card{
@@ -106,9 +105,7 @@ export default {
     left: 0;
     width: 100%;
     height:200px;
-    &:hover{
-        display: none;
-    }
+    
      
     img{
         width: 100%;

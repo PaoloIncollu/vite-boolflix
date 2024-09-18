@@ -51,8 +51,8 @@ export default {
       Serie TV Trovate
     </h2>
     <div class="my-container-cards d-flex flex-wrap">
-		<div v-for=" (serie, index) in store.seriesTv" :key="index" class="my-container-card border-0 ">
-			<div class="my-card bg-white">
+		<div v-for=" (serie, index) in store.seriesTv" :key="index" class="my-container-card border-0">
+			<div class="my-card bg-white pb-3 ">
 				<SingleItem 
 				:title="serie.name"
 				:originalTitle="serie.original_name"
@@ -71,7 +71,8 @@ export default {
  </main>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
+
 .my-container-cards{
 	width: 80%;
 	margin: 0 auto;
@@ -80,12 +81,17 @@ export default {
 		width:calc(100% / 4);
 		height: 200px;
 		margin-bottom: 40px;
+		
 	
 		.my-card{
 			position: relative;
 			width: 80%;
 			height: 200px;
-			
+			overflow: auto;
+			scrollbar-width: none;
+			&:hover img{
+				display: none;
+    }
 
 		}
 	}
